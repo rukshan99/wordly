@@ -1,6 +1,6 @@
 # wordly
 
-A new Flutter project.
+Wordly is a quiz based word guessing game developed as a mobile app using Flutter.
 
 ## Getting Started
 
