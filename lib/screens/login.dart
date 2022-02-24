@@ -2,8 +2,8 @@ import 'dart:ffi';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'package:wordly/screens/home.dart';
-//import 'package:wordly/utils/color.dart';
-//import 'package:wordly/widgets/header_container.dart';
+import 'package:wordly/utils/color.dart';
+import 'package:wordly/widgets/header_container.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.only(bottom: 30),
         child: Column(
           children: <Widget>[
-            //HeaderContainer("Login"),
+            HeaderContainer("Login"),
             Expanded(
               flex: 1,
               child: Container(
@@ -116,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          //primary: purpleColors, // background
+                          primary: purpleColors, // background
                           onPrimary: Colors.white,
                           padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
                           shape: RoundedRectangleBorder(
