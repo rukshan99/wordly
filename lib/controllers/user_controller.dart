@@ -28,6 +28,7 @@ class UserController {
   }
 
   // Delete a user
+  // --> need to handle the deleted user from firebase auth
   deleteUser(User user) {
     _db.runTransaction((Transaction transaction) async {
       await transaction.delete(user.id);
