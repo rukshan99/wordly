@@ -1,25 +1,24 @@
-import 'dart:ffi';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'package:wordly/screens/home.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/widgets/header_container.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  late String _email, _password;
+  late String _name, _email, _password;
 
   checkAuthentification() async {
-    _auth.authStateChanges().listen((user) {
+    _auth.authStateChanges().listen((user) async {
       if (user != null) {
         // Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => HomeScreen()));
@@ -33,16 +32,15 @@ class _LoginScreenState extends State<LoginScreen> {
     this.checkAuthentification();
   }
 
-  login() async {
+  signUp() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+
       try {
-        UserCredential user = await _auth.signInWithEmailAndPassword(
+        UserCredential user = await _auth.createUserWithEmailAndPassword(
             email: _email, password: _password);
-        if (user.user?.email == 'admin@gmail.com') {
-          Navigator.pushReplacementNamed(context, 'adminWelcome');
-        } else {
-          Navigator.pushReplacementNamed(context, 'home');
+        if (user != null) {
+          await _auth.currentUser!.updateProfile(displayName: _name);
         }
       } catch (e) {
         showError(e.toString());
@@ -76,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.only(bottom: 30),
         child: Column(
           children: <Widget>[
-            HeaderContainer("Login"),
+            HeaderContainer("Register"),
             Expanded(
               flex: 1,
               child: Container(
@@ -91,17 +89,27 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextFormField(
                         // ignore: missing_return
                         validator: (input) {
-                          if (input == null || input.isEmpty)
-                            return 'Enter Email';
+                          if (input!.isEmpty) return 'Enter Name';
                         },
                         decoration: const InputDecoration(
-                            labelText: 'Email', prefixIcon: Icon(Icons.email)),
+                            labelText: 'Name',
+                            prefixIcon: Icon(Icons.person)),
+                        onSaved: (input) => _name = input!,
+                      ),
+                      TextFormField(
+                        // ignore: missing_return
+                        validator: (input) {
+                          if (input!.isEmpty) return 'Enter Email';
+                        },
+                        decoration: const InputDecoration(
+                            labelText: 'Email',
+                            prefixIcon: Icon(Icons.email)),
                         onSaved: (input) => _email = input!,
                       ),
                       TextFormField(
                         // ignore: missing_return
                         validator: (input) {
-                          if (input != null && input.length < 6) {
+                          if (input!.length < 6) {
                             return 'Provide Minimum 6 Character Password';
                           }
                         },
@@ -123,9 +131,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius:
                                   BorderRadius.circular(100.0)), // foreground
                         ),
-                        onPressed: login,
+                        onPressed: signUp,
                         child: const Text(
-                          'LOGIN',
+                          'SIGNUP',
                           style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
