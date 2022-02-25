@@ -27,4 +27,10 @@ class UserController {
     }
   }
 
+  // Delete a user
+  deleteQuestion(User user) {
+    _db.runTransaction((Transaction transaction) async {
+      await transaction.delete(user.id);
+    });
+  }
 }
