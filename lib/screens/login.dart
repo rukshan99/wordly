@@ -25,28 +25,28 @@ class _LoginScreenState extends State<LoginScreen> {
         //     context, MaterialPageRoute(builder: (context) => HomeScreen()));
       }
     });
+  }
 
-    @override
-    Void initState() {
-      super.initState();
-      this.checkAuthentification();
-    }
+  @override
+  void initState() {
+    super.initState();
+    this.checkAuthentification();
   }
 
   login() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-        try {
-            UserCredential user = await _auth.signInWithEmailAndPassword(
-                email: _email, password: _password);
-                if (user.user?.email == 'admin@gmail.com'){
-                  Navigator.pushReplacementNamed(context, 'adminWelcome');
-                }else {
-                   Navigator.pushReplacementNamed(context, 'home');
-                }
-        } catch (e) {
-            showError(e.toString());
+      try {
+        UserCredential user = await _auth.signInWithEmailAndPassword(
+            email: _email, password: _password);
+        if (user.user?.email == 'admin@gmail.com') {
+          Navigator.pushReplacementNamed(context, 'adminWelcome');
+        } else {
+          Navigator.pushReplacementNamed(context, 'home');
         }
+      } catch (e) {
+        showError(e.toString());
+      }
     }
   }
 
@@ -91,11 +91,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextFormField(
                         // ignore: missing_return
                         validator: (input) {
-                          if (input == null || input.isEmpty) return 'Enter Email';
+                          if (input == null || input.isEmpty)
+                            return 'Enter Email';
                         },
                         decoration: const InputDecoration(
-                            labelText: 'Email',
-                            prefixIcon: Icon(Icons.email)),
+                            labelText: 'Email', prefixIcon: Icon(Icons.email)),
                         onSaved: (input) => _email = input!,
                       ),
                       TextFormField(
