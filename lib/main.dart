@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:wordly/screens/login.dart';
-//import 'package:guess_app/screens/register.dart';
+import 'package:wordly/screens/register.dart';
 import 'package:wordly/screens/welcome.dart';
 
 void main() async {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       home: const WelcomeScreen(), //_auth.currentUser != null ? HomeScreen() : SplashScreen(),
       routes: <String, WidgetBuilder>{
         "login": (BuildContext context) => const LoginScreen(),
-        //"register": (BuildContext context) => RegisterScreen(),
+        "register": (BuildContext context) => const RegisterScreen(),
         "welcome": (BuildContext context) => const WelcomeScreen()
       },
     );
