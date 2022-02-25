@@ -15,4 +15,16 @@ class UserController {
     return _db.collection('users').snapshots();
   }
 
+  // Add a user
+  addUser(User userObj) async {
+    try {
+      _db.runTransaction((Transaction transaction) async {
+        await _db.collection('users').doc().set(userObj.toMap());
+      });
+    } catch (e) {
+      // ignore: avoid_print
+      print(e.toString());
+    }
+  }
+
 }
