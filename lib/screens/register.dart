@@ -1,8 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 //import 'package:wordly/screens/home.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/widgets/header_container.dart';
+
+import '../controllers/user_controller.dart';
+import '../models/user.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -14,8 +18,10 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final userController = UserController();
 
   late String _name, _email, _password;
+  final int _points = 0;
 
   checkAuthentification() async {
     _auth.authStateChanges().listen((user) async {
@@ -41,6 +47,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             email: _email, password: _password);
         if (user != null) {
           await _auth.currentUser!.updateProfile(displayName: _name);
+          User userObj = User(name: _name, email: _email, points: _points);
+          await userController.addUser(userObj);
         }
       } catch (e) {
         showError(e.toString());
@@ -92,8 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           if (input!.isEmpty) return 'Enter Name';
                         },
                         decoration: const InputDecoration(
-                            labelText: 'Name',
-                            prefixIcon: Icon(Icons.person)),
+                            labelText: 'Name', prefixIcon: Icon(Icons.person)),
                         onSaved: (input) => _name = input!,
                       ),
                       TextFormField(
@@ -102,8 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           if (input!.isEmpty) return 'Enter Email';
                         },
                         decoration: const InputDecoration(
-                            labelText: 'Email',
-                            prefixIcon: Icon(Icons.email)),
+                            labelText: 'Email', prefixIcon: Icon(Icons.email)),
                         onSaved: (input) => _email = input!,
                       ),
                       TextFormField(
