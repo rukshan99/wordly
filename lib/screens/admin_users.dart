@@ -67,7 +67,7 @@ class _UserListState extends State<UserList> {
     });
   }
 
-  ///Deletes the user by calling controller method delete
+  // Deletes the user by calling controller method delete
   _deleteUser(User userObj) {
     userController.deleteUser(userObj.email);
     _showDeleteItemToastMessage();
@@ -84,7 +84,7 @@ class _UserListState extends State<UserList> {
         textColor: Colors.red);
   }
 
-//Loads Delete Confirmation Dialog box
+  // Loads Delete Confirmation Dialog box
   _showDeleteAlertDialogBox(BuildContext context, User userObj) {
     // set up the buttons
     Widget cancelButton = FlatButton(
@@ -241,8 +241,7 @@ class _UserListState extends State<UserList> {
                     const Divider(),
                     Row(children: <Widget>[
                       Container(
-                        child: const Icon(Icons.question_answer_rounded,
-                            color: Colors.orange),
+                        child: const Icon(Icons.email, color: Colors.orange),
                         margin: const EdgeInsets.only(right: 3.0),
                       ),
                       Flexible(
@@ -261,6 +260,11 @@ class _UserListState extends State<UserList> {
                       )),
                     ]),
                   ]),
+                  trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () {
+                        _showDeleteAlertDialogBox(context, userObj);
+                      }),
                 ),
               ),
             ),
