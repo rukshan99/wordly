@@ -440,7 +440,7 @@ class _UserListState extends State<UserList> {
                       iconSize: 20.0,
                       onPressed: () => _searchController.clear()),
                   contentPadding: const EdgeInsets.only(left: 25.0),
-                  hintText: 'Search by question',
+                  hintText: 'Type...',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4.0))),
             ),
