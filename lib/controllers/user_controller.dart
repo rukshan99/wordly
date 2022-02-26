@@ -4,7 +4,7 @@ import 'package:wordly/models/user.dart';
 class UserController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  // Create a CollectionReference called users that references the firestore collection
+  // Create a CollectionReference that references the firestore collection
   CollectionReference collectionRef =
       FirebaseFirestore.instance.collection('users');
 
