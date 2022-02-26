@@ -38,6 +38,8 @@ dependencies:
   firebase_auth_web: ^3.3.7
   cloud_firestore: ^3.1.9
   cloud_firestore_web: ^2.6.9
+  flutter_speed_dial: ^5.0.0+1
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
