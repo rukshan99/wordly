@@ -5,12 +5,12 @@ class User {
   final String email;
   final int points;
 
-  DocumentReference id;
+  //DocumentReference id;
 
   User({
     required this.name,
     required this.email,
-    required this.id,
+    //required this.id,
     required this.points,
   });
 
@@ -18,13 +18,13 @@ class User {
     // ignore: avoid_print
     print(json['user']);
     return User(
-        id: docRef,
+        //id: docRef,
         name: json['question'] as String,
         email: json['question'] as String,
         points: json['points'] as int);
   }
 
   Map<String, dynamic> toMap() {
-    return {"name": name, "email": email, "points": points, "id": id};
+    return {"name": name, "email": email, "points": points}; // , "id": id
   }
 }
