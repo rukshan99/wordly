@@ -53,7 +53,8 @@ class _UserListState extends State<UserList> {
   _onSearchChanged() {
     List<QueryDocumentSnapshot> filteredResultsList = [];
     _resultsList.forEach((element) {
-      User currentUser = User.fromJson(element.data() as Map<String, dynamic>, element.reference);
+      User currentUser = User.fromJson(
+          element.data() as Map<String, dynamic>, element.reference);
       String formattedSearchText = _searchController.text.toLowerCase();
 
       if (currentUser.name.toLowerCase().contains(formattedSearchText) ||
@@ -169,6 +170,7 @@ class _UserListState extends State<UserList> {
             return buildList(context, _searchResultsList);
           }
         }
+        return buildList(context, []);
       },
     );
   }
