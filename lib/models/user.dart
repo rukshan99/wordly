@@ -19,8 +19,8 @@ class User {
     print(json['user']);
     return User(
         //id: docRef,
-        name: json['question'] as String,
-        email: json['question'] as String,
+        name: json['name'] as String,
+        email: json['email'] as String,
         points: json['points'] as int);
   }
 

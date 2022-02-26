@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:wordly/screens/login.dart';
 import 'package:wordly/screens/register.dart';
 import 'package:wordly/screens/welcome.dart';
+import 'package:wordly/screens/admin_users.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,11 +24,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const WelcomeScreen(), //_auth.currentUser != null ? HomeScreen() : SplashScreen(),
+      home:
+          const WelcomeScreen(), //_auth.currentUser != null ? HomeScreen() : SplashScreen(),
       routes: <String, WidgetBuilder>{
         "login": (BuildContext context) => const LoginScreen(),
         "register": (BuildContext context) => const RegisterScreen(),
-        "welcome": (BuildContext context) => const WelcomeScreen()
+        "welcome": (BuildContext context) => const WelcomeScreen(),
+        "userList": (BuildContext context) => const UserList()
       },
     );
   }

@@ -4,6 +4,10 @@ import 'package:wordly/models/user.dart';
 class UserController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
+  // Create a CollectionReference called users that references the firestore collection
+  CollectionReference collectionRef =
+      FirebaseFirestore.instance.collection('users');
+
   // Get all users
   Stream<List<User>> getUsers() {
     return _db.collection('users').snapshots().map((snapshot) => snapshot.docs
@@ -29,9 +33,12 @@ class UserController {
 
   // Delete a user
   // --> need to handle the deleted user from firebase auth
-  deleteUser(DocumentReference user) {
-    _db.runTransaction((Transaction transaction) async {
-      await transaction.delete(user);
-    });
+  deleteUser(String email) {
+    collectionRef.where('email', isEqualTo: email).get().then((snapshot) => {
+          _db.runTransaction((Transaction transaction) async {
+            snapshot.docs.forEach(
+                (DocumentSnapshot doc) => {transaction.delete(doc.reference)});
+          })
+        });
   }
 }
