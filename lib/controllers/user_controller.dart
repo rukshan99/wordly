@@ -53,12 +53,11 @@ class UserController {
     if (email == null || email == 'admin@gmail.com') return false;
 
     bool isAdmin = false;
-    collectionRef.where('email', isEqualTo: email).get().then((snapshot) => {
-          snapshot.docs.forEach((doc) {
-            print(doc.data());
-            //isAdmin = doc.data()!.isAdmin;
-          })
-        });
+    var snapshots = await collectionRef.where('email', isEqualTo: email).get();
+    snapshots.docs.forEach((doc) {
+      //print('$doc.data()');
+      isAdmin = doc.get('isAdmin');
+    });
     return isAdmin;
   }
 }
