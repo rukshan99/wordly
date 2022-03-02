@@ -158,7 +158,8 @@ class _UserListState extends State<UserList> {
     User userObj = User(
         name: snapshot.data()['name'],
         email: snapshot.data()['email'],
-        points: snapshot.data()['points']);
+        points: snapshot.data()['points'],
+        isAdmin: snapshot.data()['isAdmin']);
 
     showDialog(
         context: context,

@@ -47,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             email: _email, password: _password);
         if (user != null) {
           await _auth.currentUser!.updateProfile(displayName: _name);
-          User userObj = User(name: _name, email: _email, points: _points);
+          User userObj = User(name: _name, email: _email, points: _points, isAdmin: false);
           await userController.addUser(userObj);
         }
       } catch (e) {
