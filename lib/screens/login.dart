@@ -1,9 +1,11 @@
 import 'dart:ffi';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 //import 'package:wordly/screens/home.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/widgets/header_container.dart';
+import '../controllers/user_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  final userController = UserController();
   late String _email, _password;
 
   checkAuthentification() async {
@@ -39,7 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
       try {
         UserCredential user = await _auth.signInWithEmailAndPassword(
             email: _email, password: _password);
-        if (user.user?.email == 'admin@gmail.com') {
+        bool isAdmin = await userController.checkIsAdmin(user.user?.email);
+        if (user.user?.email == 'admin@gmail.com' || isAdmin) {
           Navigator.pushReplacementNamed(context, 'userList');
         } else {
           Navigator.pushReplacementNamed(context, 'home');

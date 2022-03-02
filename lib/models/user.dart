@@ -4,27 +4,26 @@ class User {
   final String name;
   final String email;
   final int points;
-
-  //DocumentReference id;
+  final bool isAdmin;
 
   User({
     required this.name,
     required this.email,
-    //required this.id,
     required this.points,
+    required this.isAdmin
   });
 
   factory User.fromJson(Map<String, dynamic> json, DocumentReference docRef) {
     // ignore: avoid_print
     print(json['user']);
     return User(
-        //id: docRef,
         name: json['name'] as String,
         email: json['email'] as String,
-        points: json['points'] as int);
+        points: json['points'] as int,
+        isAdmin: json['isAdmin'] as bool);
   }
 
   Map<String, dynamic> toMap() {
-    return {"name": name, "email": email, "points": points}; // , "id": id
+    return {"name": name, "email": email, "points": points, "isAdmin": isAdmin};
   }
 }

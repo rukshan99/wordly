@@ -41,4 +41,23 @@ class UserController {
           })
         });
   }
+
+  updateIsAdmin(DocumentReference docRef, bool isAdmin) {
+    return docRef
+        .update({'isAdmin': isAdmin})
+        .then((value) => print("User was given Admin privileges"))
+        .catchError((error) => print("Failed to update user to Admin: $error"));
+  }
+
+  Future checkIsAdmin(String? email) async {
+    if (email == null || email == 'admin@gmail.com') return false;
+
+    bool isAdmin = false;
+    var snapshots = await collectionRef.where('email', isEqualTo: email).get();
+    snapshots.docs.forEach((doc) {
+      //print('$doc.data()');
+      isAdmin = doc.get('isAdmin');
+    });
+    return isAdmin;
+  }
 }
