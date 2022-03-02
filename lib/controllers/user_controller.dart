@@ -48,4 +48,17 @@ class UserController {
         .then((value) => print("User was given Admin privileges"))
         .catchError((error) => print("Failed to update user to Admin: $error"));
   }
+
+  Future checkIsAdmin(String? email) async {
+    if (email == null || email == 'admin@gmail.com') return false;
+
+    bool isAdmin = false;
+    collectionRef.where('email', isEqualTo: email).get().then((snapshot) => {
+          snapshot.docs.forEach((doc) {
+            print(doc.data());
+            //isAdmin = doc.data()!.isAdmin;
+          })
+        });
+    return isAdmin;
+  }
 }

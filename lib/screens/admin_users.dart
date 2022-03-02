@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
+import 'package:wordly/providers/user_provider.dart';
 import 'package:wordly/widgets/main_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:substring_highlight/substring_highlight.dart';
@@ -199,7 +201,7 @@ class _UserListState extends State<UserList> {
                         width: 110.0,
                         height: 45.0,
                         toggleSize: 50.0,
-                        value: isAdmin,
+                        value: Provider.of<UserProvider>(context).isAdmin,
                         borderRadius: 25.0,
                         padding: 8.0,
                         showOnOff: true,
@@ -209,7 +211,7 @@ class _UserListState extends State<UserList> {
                           setState(() {
                             isAdmin = val;
                           });
-                          _updateIsAdmin(docRef, val);
+                          _updateIsAdmin(context, docRef, val);
                         },
                       ),
                     ],
@@ -221,8 +223,9 @@ class _UserListState extends State<UserList> {
         });
   }
 
-  _updateIsAdmin(DocumentReference docRef, bool isAdmin) {
+  _updateIsAdmin(BuildContext context, DocumentReference docRef, bool isAdmin) {
     userController.updateIsAdmin(docRef, isAdmin);
+    Provider.of<UserProvider>(context, listen: false).update(isAdmin);
   }
 
   // Load all the users to the build body as a widget
@@ -265,7 +268,7 @@ class _UserListState extends State<UserList> {
     final userObj =
         User.fromJson(data.data() as Map<String, dynamic>, data.reference);
     final String formattedUserNumberText = " " + userNumber.toString() + " ";
-
+    isAdmin = userObj.isAdmin;
     return Padding(
         key: ValueKey(userObj.name),
         padding: const EdgeInsets.symmetric(vertical: 19, horizontal: 1),

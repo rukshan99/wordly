@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wordly/providers/user_provider.dart';
 import 'package:wordly/screens/login.dart';
 import 'package:wordly/screens/register.dart';
 import 'package:wordly/screens/welcome.dart';
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //final FirebaseAuth _auth = FirebaseAuth.instance;
 
-    return MaterialApp(
+    return ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+      child: MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
@@ -32,6 +36,6 @@ class MyApp extends StatelessWidget {
         "welcome": (BuildContext context) => const WelcomeScreen(),
         "userList": (BuildContext context) => const UserList()
       },
-    );
+    ));
   }
 }
