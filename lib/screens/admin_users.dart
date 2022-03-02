@@ -8,6 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wordly/widgets/main_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:substring_highlight/substring_highlight.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 import '../controllers/user_controller.dart';
 import '../models/user.dart';
@@ -23,6 +24,7 @@ class UserList extends StatefulWidget {
 
 class _UserListState extends State<UserList> {
   final userController = UserController();
+  bool isAdmin = false;
 
   //Functions as the controller for search field
   final TextEditingController _searchController = TextEditingController();
@@ -104,8 +106,6 @@ class _UserListState extends State<UserList> {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: const Text("Delete Confirmation "),
-//      content: Text(
-//          "Are you sure you want to permanently delete this user?"),
       content: SingleChildScrollView(
         child: ListBody(
           children: <Widget>[
@@ -151,7 +151,80 @@ class _UserListState extends State<UserList> {
     );
   }
 
-//Load all the users to the build body as a widget
+  // Load user profile
+  _showUserProfile(BuildContext context, snapshot) {
+    DocumentReference docRef = snapshot.reference;
+
+    User userObj = User(
+        name: snapshot.data()['name'],
+        email: snapshot.data()['email'],
+        points: snapshot.data()['points']);
+
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return Center(
+              child: SizedBox(
+                width: 300,
+                height: 400,
+                child: Card(
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(color: Colors.white70, width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      const CircleAvatar(
+                        backgroundImage: AssetImage('assets/img/user.png'),
+                        minRadius: 60,
+                        maxRadius: 100,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text(userObj.name,
+                          style: Theme.of(context).textTheme.headline5),
+                      Text(userObj.email,
+                          style: Theme.of(context).textTheme.caption),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      FlutterSwitch(
+                        width: 110.0,
+                        height: 45.0,
+                        toggleSize: 50.0,
+                        value: isAdmin,
+                        borderRadius: 25.0,
+                        padding: 8.0,
+                        showOnOff: true,
+                        activeText: 'Admin',
+                        inactiveText: 'User  ',
+                        onToggle: (val) {
+                          setState(() {
+                            isAdmin = val;
+                          });
+                          _updateIsAdmin(docRef, val);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  _updateIsAdmin(DocumentReference docRef, bool isAdmin) {
+    userController.updateIsAdmin(docRef, isAdmin);
+  }
+
+  // Load all the users to the build body as a widget
   Widget buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: userController.getAllUsers(),
@@ -212,54 +285,92 @@ class _UserListState extends State<UserList> {
               ),
               child: SingleChildScrollView(
                 child: ListTile(
-                  title: Column(children: <Widget>[
-                    Row(children: <Widget>[
-                      Container(
-                        child: Text(formattedUserNumberText,
-                            style: const TextStyle(color: Colors.white)),
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5)),
-                            color: Colors.purple),
-                        padding: const EdgeInsets.all(3.0),
-                        margin: const EdgeInsets.only(right: 5.0),
-                      ),
-                      Flexible(
-                          child: SubstringHighlight(
-                        text: userObj.name,
-                        term: _searchController.text,
-                        textStyle: const TextStyle(
-                            // non-highlight style
-                            color: Colors.black,
-                            fontSize: 16),
-                        textStyleHighlight: const TextStyle(
-                          // highlight style
-                          color: Colors.black,
-                          backgroundColor: Colors.yellow,
+                  title: InkWell(
+                    child: Column(children: <Widget>[
+                      Row(children: <Widget>[
+                        Container(
+                          child: Text(formattedUserNumberText,
+                              style: const TextStyle(color: Colors.white)),
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              color: Colors.purple),
+                          padding: const EdgeInsets.all(3.0),
+                          margin: const EdgeInsets.only(right: 5.0),
                         ),
-                      )),
-                    ]),
-                    const Divider(),
-                    Row(children: <Widget>[
-                      Container(
-                        child: const Icon(Icons.email, color: Colors.orange),
-                        margin: const EdgeInsets.only(right: 3.0),
-                      ),
-                      Flexible(
-                          child: SubstringHighlight(
-                        text: userObj.email,
-                        term: _searchController.text,
-                        textStyle: const TextStyle(
-                            // non-highlight style
+                        Flexible(
+                            child: SubstringHighlight(
+                          text: userObj.name,
+                          term: _searchController.text,
+                          textStyle: const TextStyle(
+                              // non-highlight style
+                              color: Colors.black,
+                              fontSize: 16),
+                          textStyleHighlight: const TextStyle(
+                            // highlight style
                             color: Colors.black,
-                            fontSize: 16),
-                        textStyleHighlight: const TextStyle(
-                          // highlight style
-                          color: Colors.black,
-                          backgroundColor: Colors.yellow,
+                            backgroundColor: Colors.yellow,
+                          ),
+                        )),
+                        Container(
+                            child: isAdmin
+                                ? Container(
+                                    child: const Text('Admin',
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 2, 79, 167))),
+                                    decoration: const BoxDecoration(
+                                        border: Border(
+                                          top: BorderSide(
+                                              width: 1.0,
+                                              color: Color.fromARGB(
+                                                  255, 2, 79, 167)),
+                                          left: BorderSide(
+                                              width: 1.0,
+                                              color: Color.fromARGB(
+                                                  255, 2, 79, 167)),
+                                          right: BorderSide(
+                                              width: 1.0,
+                                              color: Color.fromARGB(
+                                                  255, 2, 79, 167)),
+                                          bottom: BorderSide(
+                                              width: 1.0,
+                                              color: Color.fromARGB(
+                                                  255, 2, 79, 167)),
+                                        ),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
+                                    padding: const EdgeInsets.all(3.0),
+                                    margin: const EdgeInsets.only(left: 5.0),
+                                  )
+                                : null),
+                      ]),
+                      const Divider(),
+                      Row(children: <Widget>[
+                        Container(
+                          child: const Icon(Icons.email, color: Colors.orange),
+                          margin: const EdgeInsets.only(right: 3.0),
                         ),
-                      )),
+                        Flexible(
+                            child: SubstringHighlight(
+                          text: userObj.email,
+                          term: _searchController.text,
+                          textStyle: const TextStyle(
+                              // non-highlight style
+                              color: Colors.black,
+                              fontSize: 16),
+                          textStyleHighlight: const TextStyle(
+                            // highlight style
+                            color: Colors.black,
+                            backgroundColor: Colors.yellow,
+                          ),
+                        )),
+                      ]),
                     ]),
-                  ]),
+                    onTap: () => {_showUserProfile(context, data)},
+                  ),
                   trailing: IconButton(
                       icon: const Icon(Icons.delete, color: Colors.red),
                       onPressed: () {

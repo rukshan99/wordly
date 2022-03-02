@@ -41,4 +41,8 @@ class UserController {
           })
         });
   }
+
+  updateIsAdmin(DocumentReference docRef, bool isAdmin) {
+  
+  }
 }

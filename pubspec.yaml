@@ -42,6 +42,7 @@ dependencies:
   fluttertoast: ^8.0.9
   shared_preferences: ^2.0.13
   substring_highlight: ^1.0.33
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:

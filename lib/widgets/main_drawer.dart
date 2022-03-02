@@ -30,7 +30,7 @@ class MainDrawer extends StatelessWidget {
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: AssetImage('assets/img/worker.png'),
+                        image: AssetImage('assets/img/user.png'),
                       ),
                     ),
                   ),
