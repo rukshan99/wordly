@@ -43,6 +43,9 @@ class UserController {
   }
 
   updateIsAdmin(DocumentReference docRef, bool isAdmin) {
-  
+    return docRef
+        .update({'isAdmin': isAdmin})
+        .then((value) => print("User was given Admin privileges"))
+        .catchError((error) => print("Failed to update user to Admin: $error"));
   }
 }
