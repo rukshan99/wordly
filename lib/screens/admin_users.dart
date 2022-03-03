@@ -162,7 +162,7 @@ class _UserListState extends State<UserList> {
         email: snapshot.data()['email'],
         points: snapshot.data()['points'],
         isAdmin: snapshot.data()['isAdmin']);
-
+    bool isAdmin_ = userObj.isAdmin;
     showDialog(
         context: context,
         builder: (context) {
@@ -201,7 +201,7 @@ class _UserListState extends State<UserList> {
                         width: 110.0,
                         height: 45.0,
                         toggleSize: 50.0,
-                        value: Provider.of<UserProvider>(context).isAdmin,
+                        value: isAdmin_,
                         borderRadius: 25.0,
                         padding: 8.0,
                         showOnOff: true,
@@ -210,6 +210,7 @@ class _UserListState extends State<UserList> {
                         onToggle: (val) {
                           setState(() {
                             isAdmin = val;
+                            isAdmin_ = val;
                           });
                           _updateIsAdmin(context, docRef, val);
                         },
