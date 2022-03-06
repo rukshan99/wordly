@@ -56,6 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                     Text(
                       'Refresh the knowledge and improve your vocabulary',
+                      textAlign: TextAlign.center,
                       style:
                           TextStyle(fontSize: 20.0, color: purpleLightColors),
                     ),

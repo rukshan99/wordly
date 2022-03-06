@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wordly/utils/color.dart';
 
+// ignore: must_be_immutable
 class HeaderContainer extends StatelessWidget {
   var text = "Login";
 
@@ -15,18 +16,21 @@ class HeaderContainer extends StatelessWidget {
               colors: [purpleColors, purpleLightColors],
               end: Alignment.bottomCenter,
               begin: Alignment.topCenter),
-          borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(100))),
+          borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(100),
+              bottomRight: Radius.circular(100))),
       child: Stack(
+        alignment: Alignment.center,
         children: <Widget>[
           Positioned(
-            bottom: 20,
-              right: 20,
+              bottom: 15,
               child: Text(
-            text,
-            style: const TextStyle(color: Colors.white,fontSize: 20),
-          )),
+                text,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white, fontSize: 20),
+              )),
           Center(
-            child: Image.asset("assets/img/Logo.png"),
+            child: Image.asset("assets/img/logo.jpg"),
           ),
         ],
       ),
