@@ -94,8 +94,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextFormField(
                         // ignore: missing_return
                         validator: (input) {
-                          if (input == null || input.isEmpty)
+                          if (input == null || input.isEmpty) {
                             return 'Enter Email';
+                          }
                         },
                         decoration: const InputDecoration(
                             labelText: 'Email', prefixIcon: Icon(Icons.email)),
