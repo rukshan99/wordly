@@ -10,6 +10,7 @@ import 'package:wordly/screens/admin_users.dart';
 import 'package:wordly/screens/quiz.dart';
 import 'package:wordly/screens/home.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+       primarySwatch: Colors.blue,
+        
       ),
       home:
           const WelcomeScreen(), //_auth.currentUser != null ? HomeScreen() : SplashScreen(),
