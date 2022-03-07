@@ -5,6 +5,7 @@ import 'package:wordly/providers/question_provider.dart';
 import 'package:wordly/widgets/main_drawer.dart';
 import 'package:wordly/widgets/quiz_body.dart';
 import 'package:provider/provider.dart';
+import 'package:wordly/utils/color.dart';
 
 class QuizScreen extends StatelessWidget {
 
@@ -17,8 +18,9 @@ class QuizScreen extends StatelessWidget {
         StreamProvider(create: (context) => controller.getQuesions()),
       ],
       child: Scaffold(
-        backgroundColor: Colors.purple,
+        backgroundColor: purpleLightColors,
         appBar: AppBar(
+          backgroundColor: purpleColors,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

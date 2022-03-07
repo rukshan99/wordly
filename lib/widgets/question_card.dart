@@ -7,6 +7,7 @@ import 'package:wordly/providers/question_provider.dart';
 import 'package:wordly/screens/quiz.dart';
 import 'package:wordly/widgets/option.dart';
 import 'package:provider/provider.dart';
+import 'package:wordly/utils/color.dart';
 
 class QuestionCard extends StatelessWidget {
   final int length;
@@ -79,7 +80,7 @@ class QuestionCard extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                color: Colors.purple,
+                color: purpleColors,
               ),
             ],
           ),

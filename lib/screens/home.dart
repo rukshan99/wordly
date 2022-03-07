@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: purpleColors,
+      backgroundColor: purpleLightColors,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -31,6 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
+              primary: purpleColors, // background
+              onPrimary: Colors.white,
               padding: EdgeInsets.fromLTRB(100, 15, 100, 15),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(100.0)), // foreground
@@ -40,8 +42,11 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Text(
               'Start Quiz',
-              style: TextStyle(fontSize: 18),
-            ),
+              style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
           ),
         ],
       ),
