@@ -277,7 +277,7 @@ class _UserListState extends State<UserList> {
             key: Key(userObj.email.toString() +
                 Random().nextInt(10000).toString()), //--> userObj.email
             background: Container(
-              color: Colors.purple,
+              color: const Color.fromARGB(255, 32,167,219),
               child: const Padding(
                 padding: EdgeInsets.all(15),
                 child: Icon(Icons.delete, color: Colors.red, size: 50),
@@ -299,7 +299,7 @@ class _UserListState extends State<UserList> {
                           decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5)),
-                              color: Colors.purple),
+                              color: Color.fromARGB(255, 32,167,219)),
                           padding: const EdgeInsets.all(3.0),
                           margin: const EdgeInsets.only(right: 5.0),
                         ),
@@ -467,7 +467,7 @@ class _UserListState extends State<UserList> {
                       minSize: double.minPositive,
                       padding: const EdgeInsets.fromLTRB(2, 3, 2, 3),
                       child: const Icon(Icons.lightbulb,
-                          color: Colors.purple, size: 21),
+                          color: Color.fromARGB(255, 32,167,219), size: 21),
                     )),
                 const Flexible(
                   flex: 8,
@@ -506,7 +506,7 @@ class _UserListState extends State<UserList> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              'assets/img/Logo.png',
+              'assets/img/logo.jpg',
               fit: BoxFit.cover,
               height: 60.0,
             ),
@@ -519,7 +519,7 @@ class _UserListState extends State<UserList> {
             )
           ],
         ),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color.fromARGB(255, 28,150,197),
       ),
       drawer: const MainDrawer(),
       body: Container(
@@ -536,7 +536,7 @@ class _UserListState extends State<UserList> {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: const [
                   Icon(Icons.supervised_user_circle,
-                      color: Colors.purple, size: 30),
+                      color: Color.fromARGB(255, 28,150,197), size: 30),
                   Text(
                     " USERS LIST",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
@@ -560,7 +560,7 @@ class _UserListState extends State<UserList> {
                       iconSize: 20.0,
                       onPressed: () => _searchController.clear()),
                   contentPadding: const EdgeInsets.only(left: 25.0),
-                  hintText: 'Type...',
+                  hintText: 'Search',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4.0))),
             ),

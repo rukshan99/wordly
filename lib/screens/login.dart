@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/widgets/header_container.dart';
 import '../controllers/user_controller.dart';
+import 'dart:ffi';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -94,8 +95,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextFormField(
                         // ignore: missing_return
                         validator: (input) {
-                          if (input == null || input.isEmpty)
+                          if (input == null || input.isEmpty) {
                             return 'Enter Email';
+                          }
                         },
                         decoration: const InputDecoration(
                             labelText: 'Email', prefixIcon: Icon(Icons.email)),
