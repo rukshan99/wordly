@@ -9,6 +9,7 @@ import 'package:wordly/screens/welcome.dart';
 import 'package:wordly/screens/admin_users.dart';
 import 'package:wordly/screens/quiz.dart';
 import 'package:wordly/screens/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 void main() async {
