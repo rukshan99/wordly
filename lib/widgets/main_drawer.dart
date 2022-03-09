@@ -49,14 +49,7 @@ class MainDrawer extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.exit_to_app),
-            title: const Text('Sign out'),
-            onTap: () async {
-              await _auth.signOut().then((value) => navigateLogin());
-            },
-          ),
+          ),        
           ListTile(
             leading: const Icon(Icons.list),
             title: const Text('Definition List'),
@@ -65,7 +58,14 @@ class MainDrawer extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=> definitionList() ));
               });
             },
-          )
+          ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text('Sign out'),
+            onTap: () async {
+              await _auth.signOut().then((value) => navigateLogin());
+            },
+          ),
         ],
       ),
     );

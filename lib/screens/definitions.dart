@@ -291,7 +291,7 @@ class _DefinitionListState extends State<definitionList> {
                       minSize: double.minPositive,
                       padding: const EdgeInsets.fromLTRB(2, 3, 2, 3),
                       child:
-                          const Icon(Icons.lightbulb, color: Colors.purple, size: 21),
+                          const Icon(Icons.lightbulb, color: Color.fromARGB(255, 32,167,219), size: 21),
                     )),
                 const Flexible(
                   flex: 8,
@@ -363,9 +363,9 @@ class _DefinitionListState extends State<definitionList> {
         builder: (context) {
           return StatefulBuilder(builder: (context, setState) {
             return AlertDialog(
-              title: Text(isEditing ? "UPDATE QUESTION" : "ADD NEW QUESTION",
+              title: Text(isEditing ? "UPDATE DEFINITION" : "ADD NEW DEFINITION",
                   textAlign: TextAlign.center),
-              backgroundColor: Colors.purple.shade100,
+              backgroundColor: Colors.blue.shade100,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(45),
               ),
@@ -396,12 +396,12 @@ class _DefinitionListState extends State<definitionList> {
                             child: TextFormField(
                               controller: questionController,
                               decoration: const InputDecoration(
-                                  labelText: "Question",
-                                  hintText: "Enter Question"),
+                                  labelText: "Definition",
+                                  hintText: "Enter Definition"),
                             ),
                           ),
                           const Divider(
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 32,167,219),
                             thickness: 5.0,
                           ),
                           Padding(
@@ -426,7 +426,7 @@ class _DefinitionListState extends State<definitionList> {
                             ),
                           ),
                           const Divider(
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 32,167,219),
                             thickness: 5.0,
                           ),
                           Padding(
@@ -451,7 +451,7 @@ class _DefinitionListState extends State<definitionList> {
                             ),
                           ),
                           const Divider(
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 32,167,219),
                             thickness: 5.0,
                           ),
                           Padding(
@@ -476,7 +476,7 @@ class _DefinitionListState extends State<definitionList> {
                             ),
                           ),
                           const Divider(
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 32,167,219),
                             thickness: 5.0,
                           ),
                           Padding(
@@ -501,14 +501,14 @@ class _DefinitionListState extends State<definitionList> {
                             ),
                           ),
                           const Divider(
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 32,167,219),
                             thickness: 5.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: FlatButton(
                               child: Text(isEditing ? "UPDATE" : 'ADD '),
-                              color: Colors.purple,
+                              color: Color.fromARGB(255, 32,167,219),
                               textColor: Colors.white,
                               onPressed: () {
                                 if (questionController.text.isEmpty ||
@@ -633,7 +633,7 @@ class _DefinitionListState extends State<definitionList> {
             key: new Key(
                 questionObj.id.toString() + Random().nextInt(10000).toString()),
             background: Container(
-              color: Colors.purple,
+              color: const Color.fromARGB(255, 32,167,219),
               child: const Padding(
                 padding: EdgeInsets.all(15),
                 child: Icon(Icons.delete, color: Colors.red, size: 50),
@@ -655,7 +655,7 @@ class _DefinitionListState extends State<definitionList> {
                           decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5)),
-                              color: Colors.purple),
+                              color: Color.fromARGB(255, 32,167,219)),
                           padding: const EdgeInsets.all(3.0),
                           margin: const EdgeInsets.only(right: 5.0),
                         ),
@@ -868,7 +868,7 @@ class _DefinitionListState extends State<definitionList> {
                       minSize: double.minPositive,
                       padding: const EdgeInsets.fromLTRB(2, 3, 2, 3),
                       child:
-                          const Icon(Icons.lightbulb, color: Colors.purple, size: 21),
+                          const Icon(Icons.lightbulb, color: Color.fromARGB(255, 32,167,219), size: 21),
                     )),
                 const Flexible(
                   flex: 8,
@@ -915,12 +915,12 @@ class _DefinitionListState extends State<definitionList> {
               padding: const EdgeInsets.all(8.0),
               child: const Text(
                 'Guess The Word',
-                style: const TextStyle(fontFamily: 'Righteous', fontSize: 20.0),
+                style: TextStyle(fontFamily: 'Righteous', fontSize: 20.0),
               ),
             )
           ],
         ),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color.fromARGB(255, 32,167,219),
       ),
       drawer: const MainDrawer(),
       body: Container(
@@ -933,11 +933,11 @@ class _DefinitionListState extends State<definitionList> {
             const SizedBox(
               height: 20,
             ),
-            Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
-              const Icon(Icons.help_center_rounded, color: Colors.purple, size: 30),
-              const Text(
-                " QUIZ LIST",
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+            Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: const [
+              Icon(Icons.list_alt_sharp, color: Color.fromARGB(255, 32,167,219), size: 30),
+              Text(
+                " DEFINITION LIST",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
               )
             ]),
             const SizedBox(
@@ -957,7 +957,7 @@ class _DefinitionListState extends State<definitionList> {
                       iconSize: 20.0,
                       onPressed: () => _searchController.clear()),
                   contentPadding: const EdgeInsets.only(left: 25.0),
-                  hintText: 'Search by question',
+                  hintText: 'Search by definition',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4.0))),
             ),
@@ -966,14 +966,14 @@ class _DefinitionListState extends State<definitionList> {
         ),
       ),
       floatingActionButton: SpeedDial(
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color.fromARGB(255, 32,167,219),
         closeManually: true,
         child: const Icon(Icons.sort),
         children: [
           SpeedDialChild(
             //Add new Question floating action button
             child: const Icon(Icons.add),
-            backgroundColor: Colors.purple,
+            backgroundColor: const Color.fromARGB(255, 32,167,219),
             onTap: () => {viewAddUpdateDialogBox(context)},
           ),
           SpeedDialChild(
