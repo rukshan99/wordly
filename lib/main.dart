@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// @dart=2.9
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +7,10 @@ import 'package:wordly/screens/login.dart';
 import 'package:wordly/screens/register.dart';
 import 'package:wordly/screens/welcome.dart';
 import 'package:wordly/screens/admin_users.dart';
+import 'package:wordly/screens/quiz.dart';
+import 'package:wordly/screens/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +19,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+       primarySwatch: Colors.blue,
+        
       ),
       home:
           const WelcomeScreen(), //_auth.currentUser != null ? HomeScreen() : SplashScreen(),
@@ -34,7 +39,9 @@ class MyApp extends StatelessWidget {
         "login": (BuildContext context) => const LoginScreen(),
         "register": (BuildContext context) => const RegisterScreen(),
         "welcome": (BuildContext context) => const WelcomeScreen(),
-        "userList": (BuildContext context) => const UserList()
+        "userList": (BuildContext context) => const UserList(),
+        "home": (BuildContext context) => const HomeScreen(),
+        "quiz": (BuildContext context) => QuizScreen(),
       },
     ));
   }
