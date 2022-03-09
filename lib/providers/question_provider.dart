@@ -3,10 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:wordly/controllers/question_controller.dart';
 import 'package:wordly/models/question.dart';
+import 'package:wordly/controllers/score_controller.dart';
 
 class QuestionProvider with ChangeNotifier {
   // data members
-  final controller = QuestionController();
+  final controller = ScoreController();
   RxInt _questionNumber = 1.obs;
   PageController _pageController = PageController();
   List<int> _selectedOptions = [];
