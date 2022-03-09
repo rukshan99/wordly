@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wordly/utils/color.dart';
+import 'package:wordly/screens/definitions.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -10,8 +11,10 @@ class MainDrawer extends StatelessWidget {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
     navigateLogin() async {
-      Navigator.pushReplacementNamed(context, "login");
+      Navigator.pushReplacementNamed(context, "login"); 
     }
+    
+   
 
     return Drawer(
       child: Column(
@@ -52,6 +55,15 @@ class MainDrawer extends StatelessWidget {
             title: const Text('Sign out'),
             onTap: () async {
               await _auth.signOut().then((value) => navigateLogin());
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.list),
+            title: const Text('Definition List'),
+            onTap: () async {
+              _auth.authStateChanges().listen((event) {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> definitionList() ));
+              });
             },
           )
         ],
