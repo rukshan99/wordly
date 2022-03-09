@@ -10,7 +10,9 @@ import 'package:wordly/screens/admin_users.dart';
 import 'package:wordly/screens/definitions.dart';
 import 'package:wordly/screens/quiz.dart';
 import 'package:wordly/screens/home.dart';
+import 'package:wordly/screens/definition_welcomesplash.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 
 
 void main() async {
@@ -44,6 +46,7 @@ class MyApp extends StatelessWidget {
         "definitionList":(BuildContext context) => definitionList(),
         "home": (BuildContext context) => const HomeScreen(),
         "quiz": (BuildContext context) => QuizScreen(),
+        "definitionAdminWelcome":(BuildContext context) => DefinitionAdminWelcomeSplashScreen(),
       },
     ));
   }

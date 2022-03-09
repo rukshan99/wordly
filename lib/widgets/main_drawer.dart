@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/screens/definitions.dart';
+import 'package:wordly/screens/definition_welcomesplash.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -55,7 +56,7 @@ class MainDrawer extends StatelessWidget {
             title: const Text('Definition List'),
             onTap: () async {
               _auth.authStateChanges().listen((event) {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> definitionList() ));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> DefinitionAdminWelcomeSplashScreen() ));
               });
             },
           ),
