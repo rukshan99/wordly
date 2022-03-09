@@ -3,11 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wordly/models/question.dart';
+import 'package:wordly/models/score.dart';
+import 'package:wordly/controllers/score_controller.dart';
 import 'package:wordly/providers/question_provider.dart';
 import 'package:wordly/screens/quiz.dart';
 import 'package:wordly/widgets/option.dart';
 import 'package:provider/provider.dart';
 import 'package:wordly/utils/color.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class QuestionCard extends StatelessWidget {
   final int length;
@@ -18,6 +21,22 @@ class QuestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final user = _auth.currentUser;
+    final scoreController = ScoreController();
+    final createdAt = DateTime.now().toLocal();
+
+    scoreSave(int length) async {
+      Score scoreObj = Score(
+        name: user.displayName,
+        email: user.email,
+        points: length,
+        createdAt: createdAt,
+      );
+      await scoreController.addScore(scoreObj);
+      await scoreController.updateScore(scoreObj);
+    }
+
     return Container(
       child: Column(
         children: [
@@ -66,13 +85,14 @@ class QuestionCard extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             Future.delayed(Duration(seconds: 3), () {
-                             Navigator.pushReplacementNamed(context, "home");
+                              Navigator.pushReplacementNamed(context, "home");
                             });
                             return AlertDialog(
                               title: Text("Your Score"),
                               content: Text('$correct out of $length'),
                             );
                           });
+                      scoreSave(correct);
                     }
                   },
                   child: Text(
