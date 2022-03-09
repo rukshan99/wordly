@@ -1,12 +1,11 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'dart:ffi';
 
-//import 'package:wordly/screens/home.dart';
+import 'package:wordly/screens/home.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/widgets/header_container.dart';
-import '../controllers/user_controller.dart';
-import 'dart:ffi';
+import 'package:wordly/controllers/user_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -24,8 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
   checkAuthentification() async {
     _auth.authStateChanges().listen((user) {
       if (user != null) {
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
       }
     });
   }
