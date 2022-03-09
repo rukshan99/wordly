@@ -23,7 +23,7 @@ class _QuizBodyState extends State<QuizBody> {
   Widget build(BuildContext context) {
     final questions = Provider.of<List<Question>>(context);
 
-    questions.shuffle();
+    questions?.shuffle();
 
     return Stack(
       children: [
