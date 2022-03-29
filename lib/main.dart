@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wordly/providers/user_provider.dart';
+import 'package:wordly/screens/leaderboard.dart';
 import 'package:wordly/screens/login.dart';
 import 'package:wordly/screens/register.dart';
 import 'package:wordly/screens/welcome.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         "userList": (BuildContext context) => const UserList(),
         "home": (BuildContext context) => const HomeScreen(),
         "quiz": (BuildContext context) => QuizScreen(),
+        "leaderboard": (BuildContext context) => const LeaderBoard(),
         "review": (BuildContext context) => const ReviewScreen(),
         "reviewList": (BuildContext context) => const ReviewListScreen(),
       },

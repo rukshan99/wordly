@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wordly/screens/admin_users.dart';
 import 'package:wordly/utils/color.dart';
+
+import '../screens/leaderboard.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -56,21 +59,37 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
+            leading: const Icon(Icons.supervised_user_circle_outlined),
+            title: const Text('User list'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const UserList()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.leaderboard_outlined),
+            title: const Text('Leaderboard'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LeaderBoard()));
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.star_half_rounded),
             title: const Text('Add review'),
-            onTap:() => {navigateToReview()}, 
+            onTap: () => {navigateToReview()},
           ),
           ListTile(
             leading: const Icon(Icons.reviews_sharp),
             title: const Text('Review List'),
-            onTap:() => {navigateToReviewList()}, 
+            onTap: () => {navigateToReviewList()},
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Sign out'),
             onTap: () async {
               await _auth.signOut().then((value) => navigateLogin());
-          }, 
+            },
           ),
         ],
       ),

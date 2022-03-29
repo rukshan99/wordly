@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-//import 'package:wordly/screens/home.dart';
+
+import 'package:wordly/screens/home.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/widgets/header_container.dart';
-
-import '../controllers/user_controller.dart';
-import '../models/user.dart';
+import 'package:wordly/controllers/user_controller.dart';
+import 'package:wordly/models/user.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -26,8 +26,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   checkAuthentification() async {
     _auth.authStateChanges().listen((user) async {
       if (user != null) {
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
       }
     });
   }
@@ -47,7 +47,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             email: _email, password: _password);
         if (user != null) {
           await _auth.currentUser!.updateProfile(displayName: _name);
-          User userObj = User(name: _name, email: _email, points: _points, isAdmin: false);
+          User userObj =
+              User(name: _name, email: _email, points: _points, isAdmin: false);
           await userController.addUser(userObj);
         }
       } catch (e) {
