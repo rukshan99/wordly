@@ -10,6 +10,8 @@ import 'package:wordly/screens/welcome.dart';
 import 'package:wordly/screens/admin_users.dart';
 import 'package:wordly/screens/quiz.dart';
 import 'package:wordly/screens/home.dart';
+import 'package:wordly/screens/review.dart';
+import 'package:wordly/screens/reviewList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
@@ -43,7 +45,9 @@ class MyApp extends StatelessWidget {
         "userList": (BuildContext context) => const UserList(),
         "home": (BuildContext context) => const HomeScreen(),
         "quiz": (BuildContext context) => QuizScreen(),
-        "leaderboard": (BuildContext context) => const LeaderBoard()
+        "leaderboard": (BuildContext context) => const LeaderBoard(),
+        "review": (BuildContext context) => const ReviewScreen(),
+        "reviewList": (BuildContext context) => const ReviewListScreen(),
       },
     ));
   }
