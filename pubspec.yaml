@@ -45,6 +45,7 @@ dependencies:
   flutter_switch: ^0.3.2
   provider: ^6.0.2
   get: ^3.24.0
+  flutter_rating_bar: ^4.0.0
 
 dev_dependencies:
   flutter_test:

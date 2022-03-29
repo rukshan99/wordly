@@ -11,6 +11,8 @@ import 'package:wordly/screens/definitions.dart';
 import 'package:wordly/screens/quiz.dart';
 import 'package:wordly/screens/home.dart';
 import 'package:wordly/screens/definition_welcomesplash.dart';
+import 'package:wordly/screens/review.dart';
+import 'package:wordly/screens/reviewList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
@@ -47,6 +49,8 @@ class MyApp extends StatelessWidget {
         "home": (BuildContext context) => const HomeScreen(),
         "quiz": (BuildContext context) => QuizScreen(),
         "definitionAdminWelcome":(BuildContext context) => DefinitionAdminWelcomeSplashScreen(),
+        "review": (BuildContext context) => const ReviewScreen(),
+        "reviewList": (BuildContext context) => const ReviewListScreen(),
       },
     ));
   }

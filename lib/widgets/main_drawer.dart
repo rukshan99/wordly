@@ -17,6 +17,14 @@ class MainDrawer extends StatelessWidget {
     
    
 
+    navigateToReview() async {
+      Navigator.pushReplacementNamed(context, "review");
+    }
+
+    navigateToReviewList() async {
+      Navigator.pushReplacementNamed(context, "reviewList");
+    }
+
     return Drawer(
       child: Column(
         children: [
@@ -61,11 +69,21 @@ class MainDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: const Icon(Icons.star_half_rounded),
+            title: const Text('Add review'),
+            onTap:() => {navigateToReview()}, 
+          ),
+          ListTile(
+            leading: const Icon(Icons.reviews_sharp),
+            title: const Text('Review List'),
+            onTap:() => {navigateToReviewList()}, 
+          ),
+          ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Sign out'),
             onTap: () async {
               await _auth.signOut().then((value) => navigateLogin());
-            },
+          }, 
           ),
         ],
       ),
