@@ -6,6 +6,7 @@ import 'package:wordly/screens/home.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/widgets/header_container.dart';
 import 'package:wordly/controllers/user_controller.dart';
+import 'package:wordly/screens/admin_users.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -21,10 +22,16 @@ class _LoginScreenState extends State<LoginScreen> {
   late String _email, _password;
 
   checkAuthentification() async {
-    _auth.authStateChanges().listen((user) {
+    _auth.authStateChanges().listen((user) async {
+      bool isAdmin = await userController.checkIsAdmin(user?.email);
       if (user != null) {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
+        if (user.email == 'admin@gmail.com' || isAdmin) {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const UserList()));
+        } else {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
+        }
       }
     });
   }
@@ -135,6 +142,17 @@ class _LoginScreenState extends State<LoginScreen> {
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back_ios),
+                        color: purpleColors,
+                        tooltip: 'Go Back',
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, 'welcome');
+                        },
                       ),
                     ],
                   ),
