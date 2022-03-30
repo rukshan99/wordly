@@ -57,6 +57,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           User userObj =
               User(name: _name, email: _email, points: _points, isAdmin: false);
           await userController.addUser(userObj);
+          Navigator.pushReplacementNamed(context, 'login');
         }
       } catch (e) {
         showError(e.toString());
