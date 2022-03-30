@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wordly/screens/admin_users.dart';
 import 'package:wordly/utils/color.dart';
+import 'package:wordly/screens/definitions.dart';
+import 'package:wordly/screens/definition_welcomesplash.dart';
 
 import '../screens/leaderboard.dart';
 
@@ -13,8 +15,10 @@ class MainDrawer extends StatelessWidget {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
     navigateLogin() async {
-      Navigator.pushReplacementNamed(context, "login");
+      Navigator.pushReplacementNamed(context, "login"); 
     }
+    
+   
 
     navigateToReview() async {
       Navigator.pushReplacementNamed(context, "review");
@@ -57,6 +61,15 @@ class MainDrawer extends StatelessWidget {
                 ],
               ),
             ),
+          ),        
+          ListTile(
+            leading: const Icon(Icons.list),
+            title: const Text('Definition List'),
+            onTap: () async {
+              _auth.authStateChanges().listen((event) {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> DefinitionAdminWelcomeSplashScreen() ));
+              });
+            },
           ),
           ListTile(
             leading: const Icon(Icons.supervised_user_circle_outlined),

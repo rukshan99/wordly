@@ -8,11 +8,14 @@ import 'package:wordly/screens/login.dart';
 import 'package:wordly/screens/register.dart';
 import 'package:wordly/screens/welcome.dart';
 import 'package:wordly/screens/admin_users.dart';
+import 'package:wordly/screens/definitions.dart';
 import 'package:wordly/screens/quiz.dart';
 import 'package:wordly/screens/home.dart';
+import 'package:wordly/screens/definition_welcomesplash.dart';
 import 'package:wordly/screens/review.dart';
 import 'package:wordly/screens/reviewList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 
 
 void main() async {
@@ -43,9 +46,11 @@ class MyApp extends StatelessWidget {
         "register": (BuildContext context) => const RegisterScreen(),
         "welcome": (BuildContext context) => const WelcomeScreen(),
         "userList": (BuildContext context) => const UserList(),
+        "definitionList":(BuildContext context) => definitionList(),
         "home": (BuildContext context) => const HomeScreen(),
         "quiz": (BuildContext context) => QuizScreen(),
         "leaderboard": (BuildContext context) => const LeaderBoard(),
+        "definitionAdminWelcome":(BuildContext context) => DefinitionAdminWelcomeSplashScreen(),
         "review": (BuildContext context) => const ReviewScreen(),
         "reviewList": (BuildContext context) => const ReviewListScreen(),
       },
