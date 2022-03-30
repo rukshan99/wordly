@@ -143,6 +143,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Colors.white),
                         ),
                       ),
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back_ios),
+                        color: purpleColors,
+                        tooltip: 'Go Back',
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, 'welcome');
+                        },
+                      ),
                     ],
                   ),
                 ),
