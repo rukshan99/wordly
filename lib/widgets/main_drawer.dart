@@ -14,11 +14,11 @@ class MainDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
+    final isAdmin = user!.email == 'admin@gmail.com';
+
     navigateLogin() async {
-      Navigator.pushReplacementNamed(context, "login"); 
+      Navigator.pushReplacementNamed(context, "login");
     }
-    
-   
 
     navigateToReview() async {
       Navigator.pushReplacementNamed(context, "review");
@@ -61,17 +61,21 @@ class MainDrawer extends StatelessWidget {
                 ],
               ),
             ),
-          ),        
-          ListTile(
+          ),
+          if(isAdmin) ListTile(
             leading: const Icon(Icons.list),
             title: const Text('Definition List'),
             onTap: () async {
               _auth.authStateChanges().listen((event) {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> DefinitionAdminWelcomeSplashScreen() ));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DefinitionAdminWelcomeSplashScreen()));
               });
             },
           ),
-          ListTile(
+          if(isAdmin) ListTile(
             leading: const Icon(Icons.supervised_user_circle_outlined),
             title: const Text('User list'),
             onTap: () {
@@ -87,12 +91,12 @@ class MainDrawer extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const LeaderBoard()));
             },
           ),
-          ListTile(
+          if(!isAdmin) ListTile(
             leading: const Icon(Icons.star_half_rounded),
             title: const Text('Add review'),
             onTap: () => {navigateToReview()},
           ),
-          ListTile(
+          if(isAdmin) ListTile(
             leading: const Icon(Icons.reviews_sharp),
             title: const Text('Review List'),
             onTap: () => {navigateToReviewList()},
