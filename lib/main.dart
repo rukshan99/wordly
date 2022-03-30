@@ -6,6 +6,7 @@ import 'package:wordly/providers/user_provider.dart';
 import 'package:wordly/screens/leaderboard.dart';
 import 'package:wordly/screens/login.dart';
 import 'package:wordly/screens/register.dart';
+import 'package:wordly/screens/splash.dart';
 import 'package:wordly/screens/welcome.dart';
 import 'package:wordly/screens/admin_users.dart';
 import 'package:wordly/screens/definitions.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final FirebaseAuth _auth = FirebaseAuth.instance;
+    final FirebaseAuth _auth = FirebaseAuth.instance;
 
     return ChangeNotifierProvider(
       create: (context) => UserProvider(),
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         
       ),
       home:
-          const WelcomeScreen(), //_auth.currentUser != null ? HomeScreen() : SplashScreen(),
+          _auth.currentUser != null ? const HomeScreen() : const SplashScreen(),
       routes: <String, WidgetBuilder>{
         "login": (BuildContext context) => const LoginScreen(),
         "register": (BuildContext context) => const RegisterScreen(),
