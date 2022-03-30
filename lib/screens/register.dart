@@ -7,6 +7,7 @@ import 'package:wordly/utils/color.dart';
 import 'package:wordly/widgets/header_container.dart';
 import 'package:wordly/controllers/user_controller.dart';
 import 'package:wordly/models/user.dart';
+import 'package:wordly/screens/admin_users.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -25,9 +26,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   checkAuthentification() async {
     _auth.authStateChanges().listen((user) async {
+      bool isAdmin = await userController.checkIsAdmin(user?.email);
       if (user != null) {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
+        if (user.email == 'admin@gmail.com' || isAdmin) {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const UserList()));
+        } else {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
+        }
       }
     });
   }
@@ -127,7 +134,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onSaved: (input) => _password = input!,
                       ),
                       const SizedBox(
-                        height: 50.0,
+                        height: 40.0,
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
