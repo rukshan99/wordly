@@ -143,6 +143,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Colors.white),
                         ),
                       ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
                       IconButton(
                         icon: const Icon(Icons.arrow_back_ios),
                         color: purpleColors,

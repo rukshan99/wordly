@@ -135,7 +135,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onSaved: (input) => _password = input!,
                       ),
                       const SizedBox(
-                        height: 40.0,
+                        height: 30.0,
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -154,6 +154,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 15.0,
                       ),
                       IconButton(
                         icon: const Icon(Icons.arrow_back_ios),
