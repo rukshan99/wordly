@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: AnimatedSplashScreen(
-          duration: 4000,
+          duration: 3000,
           splash: 'assets/img/logo.jpg',
           splashIconSize: 160,
           nextScreen: const WelcomeScreen(),

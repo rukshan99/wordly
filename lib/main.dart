@@ -17,8 +17,6 @@ import 'package:wordly/screens/review.dart';
 import 'package:wordly/screens/reviewList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -33,28 +31,31 @@ class MyApp extends StatelessWidget {
     final FirebaseAuth _auth = FirebaseAuth.instance;
 
     return ChangeNotifierProvider(
-      create: (context) => UserProvider(),
-      child: MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-       primarySwatch: Colors.blue,
-        
-      ),
-      home:
-          _auth.currentUser != null ? const HomeScreen() : const SplashScreen(),
-      routes: <String, WidgetBuilder>{
-        "login": (BuildContext context) => const LoginScreen(),
-        "register": (BuildContext context) => const RegisterScreen(),
-        "welcome": (BuildContext context) => const WelcomeScreen(),
-        "userList": (BuildContext context) => const UserList(),
-        "definitionList":(BuildContext context) => definitionList(),
-        "home": (BuildContext context) => const HomeScreen(),
-        "quiz": (BuildContext context) => QuizScreen(),
-        "leaderboard": (BuildContext context) => const LeaderBoard(),
-        "definitionAdminWelcome":(BuildContext context) => DefinitionAdminWelcomeSplashScreen(),
-        "review": (BuildContext context) => const ReviewScreen(),
-        "reviewList": (BuildContext context) => const ReviewListScreen(),
-      },
-    ));
+        create: (context) => UserProvider(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: _auth.currentUser == null
+              ? const SplashScreen()
+              : (_auth.currentUser.email == 'admin@gmail.com'
+                  ? const UserList()
+                  : const HomeScreen()),
+          routes: <String, WidgetBuilder>{
+            "login": (BuildContext context) => const LoginScreen(),
+            "register": (BuildContext context) => const RegisterScreen(),
+            "welcome": (BuildContext context) => const WelcomeScreen(),
+            "userList": (BuildContext context) => const UserList(),
+            "definitionList": (BuildContext context) => definitionList(),
+            "home": (BuildContext context) => const HomeScreen(),
+            "quiz": (BuildContext context) => QuizScreen(),
+            "leaderboard": (BuildContext context) => const LeaderBoard(),
+            "definitionAdminWelcome": (BuildContext context) =>
+                DefinitionAdminWelcomeSplashScreen(),
+            "review": (BuildContext context) => const ReviewScreen(),
+            "reviewList": (BuildContext context) => const ReviewListScreen(),
+          },
+        ));
   }
 }
