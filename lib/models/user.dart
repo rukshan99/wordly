@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class User {
   final String name;
   final String email;
-  final int points;
+  final num points;
   final bool isAdmin;
 
   User({
@@ -19,7 +19,7 @@ class User {
     return User(
         name: json['name'] as String,
         email: json['email'] as String,
-        points: json['points'] as int,
+        points: json['points'],
         isAdmin: json['isAdmin'] as bool);
   }
 

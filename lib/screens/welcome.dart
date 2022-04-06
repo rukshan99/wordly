@@ -65,6 +65,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                     Row(
                       children: <Widget>[
+                        const SizedBox(
+                          width: 15.0,
+                        ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             primary: purpleColors, // background
@@ -82,7 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ),
                         ),
                         const SizedBox(
-                          width: 30.0,
+                          width: 40.0,
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(

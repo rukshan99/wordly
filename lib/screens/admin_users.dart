@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart'; 
 import 'package:wordly/providers/user_provider.dart';
 import 'package:wordly/widgets/main_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -506,7 +506,7 @@ class _UserListState extends State<UserList> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              'assets/img/logo.jpg',
+              'assets/img/Logo.png',
               fit: BoxFit.cover,
               height: 60.0,
             ),

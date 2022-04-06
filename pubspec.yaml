@@ -46,6 +46,9 @@ dependencies:
   provider: ^6.0.2
   get: ^3.24.0
   flutter_rating_bar: ^4.0.0
+  simple_animations: ^2.0.0
+  animated_splash_screen: ^1.2.0
+  page_transition: ^2.0.5
 
 dev_dependencies:
   flutter_test:
