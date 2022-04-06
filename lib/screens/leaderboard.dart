@@ -28,7 +28,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'assets/img/logo.jpg',
+                    'assets/img/Logo.png',
                     fit: BoxFit.cover,
                     height: 60.0,
                   ),

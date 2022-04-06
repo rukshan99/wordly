@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Container(
             child: Center(
-              child: Image.asset('assets/img/logo.jpg'),
+              child: Image.asset('assets/img/Logo.png'),
             ),
           ),
           SizedBox(

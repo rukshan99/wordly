@@ -48,7 +48,7 @@ class HeaderContainer extends StatelessWidget {
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               )),
           Center(
-            child: Image.asset("assets/img/logo.jpg"),
+            child: Image.asset("assets/img/Logo.png"),
           ),
         ],
       ),
