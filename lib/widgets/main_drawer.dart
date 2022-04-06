@@ -14,7 +14,8 @@ class MainDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    final isAdmin = user!.email == 'admin@gmail.com';
+    // final isAdmin = user!.email == 'admin@gmail.com';
+    const isAdmin = true;
 
     navigateLogin() async {
       Navigator.pushReplacementNamed(context, "login");
@@ -62,27 +63,29 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
           ),
-          if(isAdmin) ListTile(
-            leading: const Icon(Icons.list),
-            title: const Text('Definition List'),
-            onTap: () async {
-              _auth.authStateChanges().listen((event) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            DefinitionAdminWelcomeSplashScreen()));
-              });
-            },
-          ),
-          if(isAdmin) ListTile(
-            leading: const Icon(Icons.supervised_user_circle_outlined),
-            title: const Text('User list'),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const UserList()));
-            },
-          ),
+          if (isAdmin)
+            ListTile(
+              leading: const Icon(Icons.list),
+              title: const Text('Definition List'),
+              onTap: () async {
+                _auth.authStateChanges().listen((event) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              DefinitionAdminWelcomeSplashScreen()));
+                });
+              },
+            ),
+          if (isAdmin)
+            ListTile(
+              leading: const Icon(Icons.supervised_user_circle_outlined),
+              title: const Text('User list'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const UserList()));
+              },
+            ),
           ListTile(
             leading: const Icon(Icons.leaderboard_outlined),
             title: const Text('Leaderboard'),
@@ -91,16 +94,18 @@ class MainDrawer extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const LeaderBoard()));
             },
           ),
-          if(!isAdmin) ListTile(
-            leading: const Icon(Icons.star_half_rounded),
-            title: const Text('Add review'),
-            onTap: () => {navigateToReview()},
-          ),
-          if(isAdmin) ListTile(
-            leading: const Icon(Icons.reviews_sharp),
-            title: const Text('Review List'),
-            onTap: () => {navigateToReviewList()},
-          ),
+          if (!isAdmin)
+            ListTile(
+              leading: const Icon(Icons.star_half_rounded),
+              title: const Text('Add review'),
+              onTap: () => {navigateToReview()},
+            ),
+          if (isAdmin)
+            ListTile(
+              leading: const Icon(Icons.reviews_sharp),
+              title: const Text('Review List'),
+              onTap: () => {navigateToReviewList()},
+            ),
           ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Sign out'),
