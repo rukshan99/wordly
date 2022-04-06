@@ -11,6 +11,7 @@ import 'package:wordly/screens/quiz.dart';
 import 'package:wordly/screens/home.dart';
 import 'package:wordly/screens/review.dart';
 import 'package:wordly/screens/reviewList.dart';
+import 'package:wordly/screens/user_profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         "quiz": (BuildContext context) => QuizScreen(),
         "review": (BuildContext context) => const ReviewScreen(),
         "reviewList": (BuildContext context) => const ReviewListScreen(),
+        "userProfile": (BuildContext context) => const UserProfileScreen(),
       },
     ));
   }
