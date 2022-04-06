@@ -1,6 +1,6 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:wordly/controllers/question_controller.dart';
+import 'package:wordly/controllers/score_controller.dart';
 import 'package:wordly/providers/question_provider.dart';
 import 'package:wordly/widgets/quiz_drawer.dart';
 import 'package:wordly/widgets/quiz_body.dart';
@@ -11,7 +11,7 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = QuestionController();
+    final controller = ScoreController();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => QuestionProvider()),

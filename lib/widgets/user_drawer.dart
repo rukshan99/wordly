@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wordly/screens/admin_users.dart';
+import 'package:wordly/screens/home.dart';
+import 'package:wordly/screens/userLeaderboard.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/screens/definitions.dart';
 import 'package:wordly/screens/definition_welcomesplash.dart';
@@ -52,12 +54,29 @@ class UserDrawer extends StatelessWidget {
               ),
             ),
           ),        
+                    ListTile(
+            leading: const Icon(Icons.home_outlined),
+            title: const Text('Home'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+            },
+          ),
+
+            ListTile(
+            leading: const Icon(Icons.person_outline_outlined),
+            title: const Text('Profile'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ULeaderBoard()));
+            },
+          ),
           ListTile(
             leading: const Icon(Icons.leaderboard_outlined),
             title: const Text('Leaderboard'),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LeaderBoard()));
+                  MaterialPageRoute(builder: (context) => const ULeaderBoard()));
             },
           ),
 
