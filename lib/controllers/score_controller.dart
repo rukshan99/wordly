@@ -19,10 +19,6 @@ class ScoreController {
         .toList());
   }
 
-  getAllQuestions() {
-    return _db.collection('definitions').snapshots();
-  }
-
   // Get all scores
   Stream<List<Score>> getScores() {
     return _db
@@ -32,10 +28,6 @@ class ScoreController {
         .map((snapshot) => snapshot.docs
             .map((doc) => Score.fromJson(doc.data(), doc.reference))
             .toList());
-  }
-
-  getAllScores() {
-    return _db.collection('scores').snapshots();
   }
 
   // Add a Score
