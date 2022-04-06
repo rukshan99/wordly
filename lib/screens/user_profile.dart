@@ -8,6 +8,7 @@ import 'package:wordly/widgets/header_container.dart';
 import '../controllers/user_controller.dart';
 import '../models/user.dart';
 import '../widgets/main_drawer.dart';
+import '../widgets/user_drawer.dart';
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({Key? key}) : super(key: key);
@@ -33,16 +34,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   void initState() {
     super.initState();
-    // getUserDetils();
 
   }
 
   getUserDetils() async{
-    // if(user != null ){
      final user = _auth.currentUser;
      userProf = await userController.getUserData(user?.email.toString());
-    //  print('HI');
-    //  print(userProf);
      if ( userProf != null){
      setState(() {
       userName = userProf['name'];
@@ -181,7 +178,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         ),
         backgroundColor: const Color.fromARGB(255, 28,150,197),
       ),
-      drawer: const MainDrawer(),
+      drawer: const UserDrawer(),
       body: Container(
         padding: const EdgeInsets.only(bottom: 30),
         child: Column(

@@ -1,13 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wordly/models/review.dart';
 import 'package:wordly/screens/admin_users.dart';
 import 'package:wordly/screens/home.dart';
 import 'package:wordly/screens/userLeaderboard.dart';
+import 'package:wordly/screens/user_profile.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/screens/definitions.dart';
 import 'package:wordly/screens/definition_welcomesplash.dart';
 
 import '../screens/leaderboard.dart';
+import '../screens/review.dart';
 
 class UserDrawer extends StatelessWidget {
   const UserDrawer({Key? key}) : super(key: key);
@@ -68,7 +71,15 @@ class UserDrawer extends StatelessWidget {
             title: const Text('Profile'),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ULeaderBoard()));
+                  MaterialPageRoute(builder: (context) => const UserProfileScreen()));
+            },
+          ),
+            ListTile(
+            leading: const Icon(Icons.star_half_rounded),
+            title: const Text('Add Review'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ReviewScreen()));
             },
           ),
           ListTile(
