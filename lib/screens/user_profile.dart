@@ -95,7 +95,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Successfully updated user'),
+            title: const Text('Successfully Deleted User'),
             actions: <Widget>[
               TextButton(
                   onPressed: () {
@@ -108,12 +108,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         });
   }
 
-    showUpdateAlert() {
+  showUpdateAlert() {
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Successfully deleted user'),
+            title: const Text('Successfully Updated User'),
             actions: <Widget>[
               TextButton(
                   onPressed: () {
@@ -127,7 +127,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   }
 
   navigateToHome() async {
-      Navigator.pushReplacementNamed(context, "home");
+      Navigator.pushReplacementNamed(context, "welcome");
   }
 
   navigateToProfile() async {
