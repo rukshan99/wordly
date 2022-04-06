@@ -87,7 +87,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     } catch (e) {
           showError(e.toString());
     }
-    
+   
   }
 
   showAlert() {
@@ -220,9 +220,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         onChanged: (String value) async{
                           userName = value;
                         },
-                        // onSaved: (input) => setState(() {
-                        //       _Name=input!;
-                        // }) 
                       ),
                       TextFormField(
                         // ignore: missing_return
@@ -233,7 +230,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         },
                         decoration: const InputDecoration(
                             labelText: 'Email', prefixIcon: Icon(Icons.email)),
-                        // onSaved: (input) => userEmail = input!,
                       ),
                       TextFormField(
                         // ignore: missing_return
@@ -297,8 +293,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         ),
       ),
     );
-      });
-    // userName=userProf['name'];
+  });
 
   }
 }
