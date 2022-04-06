@@ -9,6 +9,8 @@ import '../controllers/review_controller.dart';
 import '../models/user.dart';
 import 'package:wordly/widgets/main_drawer.dart';
 
+import '../widgets/user_drawer.dart';
+
 class ReviewScreen extends StatefulWidget {
   const ReviewScreen({Key? key}) : super(key: key);
 
@@ -115,7 +117,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
         ),
         backgroundColor: const Color.fromARGB(255, 28,150,197),
       ),
-      drawer: const MainDrawer(),
+      drawer: const UserDrawer(),
       body: Container(
         padding: const EdgeInsets.only(bottom: 30),
         child: Column(
