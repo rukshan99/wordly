@@ -100,7 +100,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              'assets/img/logo.jpg',
+              'assets/img/Logo.png',
               fit: BoxFit.cover,
               height: 60.0,
             ),

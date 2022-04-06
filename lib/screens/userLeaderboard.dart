@@ -2,16 +2,16 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:wordly/widgets/main_drawer.dart';
+import 'package:wordly/widgets/user_drawer.dart';
 
-class LeaderBoard extends StatefulWidget {
-  const LeaderBoard({Key? key}) : super(key: key);
+class ULeaderBoard extends StatefulWidget {
+  const ULeaderBoard({Key? key}) : super(key: key);
 
   @override
   _LeaderBoardState createState() => _LeaderBoardState();
 }
 
-class _LeaderBoardState extends State<LeaderBoard> {
+class _LeaderBoardState extends State<ULeaderBoard> {
   int i = 0;
   // ignore: non_constant_identifier_names
   Color my = Colors.brown, CheckMyColor = Colors.white;
@@ -43,7 +43,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
               ),
               backgroundColor: const Color.fromARGB(255, 28, 150, 197),
             ),
-            drawer: const MainDrawer(),
+            drawer: const UserDrawer(),
             body: Container(
               margin: const EdgeInsets.only(top: 65.0),
               child: Column(
