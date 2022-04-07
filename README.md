@@ -17,6 +17,17 @@ Admins can add word definitions and answers to the database through the app. One
 - [x] Change a normal user to an Admin user
 - [x] Delete user
 - [x] Display a user leaderboard
+- [x] User Profile
+- [x] Add review
+- [x] Display reviews list
+- [x] Display definition list
+- [x] Add definition details
+- [x] Add definition details to the “definitions” collection in Cloud Firestore 
+- [x] Update definition
+- [x] Delete definition
+- [x] Display definitions to the user and calculate score
+- [x] Add score details to the “scores” collection in Cloud Firestore
+- [x] Update points earned by users according to quizzes in “users” collection
 
 ## Screenshots
 
