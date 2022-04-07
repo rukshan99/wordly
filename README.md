@@ -29,12 +29,5 @@ Admins can add word definitions and answers to the database through the app. One
 - [x] Add score details to the “scores” collection in Cloud Firestore
 - [x] Update points earned by users according to quizzes in “users” collection
 
-## Screenshots
-
-| <img src="https://user-images.githubusercontent.com/68691231/161067045-d5900cc2-6d8f-4df3-8249-45a5d3544ac8.png" alt="drawing" height='533' width="300"/> 	| <img src="https://user-images.githubusercontent.com/68691231/161067070-35bb79af-f1d1-4cb9-8a6d-116716499e1c.png" alt="drawing" height='533' width="300"/> 	| <img src="https://user-images.githubusercontent.com/68691231/161070475-798a941f-0029-49eb-a283-3ebf1905cf91.png" alt="drawing" height='533' width="300"/> 	|
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------	|-----------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| <img src="https://user-images.githubusercontent.com/68691231/161070511-cd3231ca-7ff8-4420-bb2b-d16cde000635.png" alt="drawing" height='533' width="300"/> 	| <img src="https://user-images.githubusercontent.com/68691231/161071201-e2d1b785-5c71-4615-bc26-2c854548acb2.png" alt="drawing" height='533' width="300"/> 	| <img src="https://user-images.githubusercontent.com/68691231/161071218-b5fa8f73-c36d-4eb0-88b9-4fb6b650879c.png" alt="drawing" height='533' width="300"/> 	|
-| <img src="https://user-images.githubusercontent.com/68691231/161071544-db075f77-4ffd-4051-87b9-5563f83e5197.png" alt="drawing" height='533' width="300"/> 	| <img src="https://user-images.githubusercontent.com/68691231/161071604-bac204e7-a9f5-493a-bdd4-be4fab930a18.png" alt="drawing" height='533' width="300"/> 	| <img src="https://user-images.githubusercontent.com/68691231/161071922-142b0d50-47aa-4901-b02b-d4874c00c294.png" alt="drawing" height='533' width="300"/> 	|
-
 <hr /><br />
 This project is for Educational Purposes only.
