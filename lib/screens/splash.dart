@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
         resizeToAvoidBottomInset: false,
         body: AnimatedSplashScreen(
           duration: 3000,
-          splash: 'assets/img/logo.jpg',
+          splash: 'assets/img/Logo.png',
           splashIconSize: 160,
           nextScreen: const WelcomeScreen(),
           splashTransition: SplashTransition.sizeTransition,
