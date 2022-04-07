@@ -1,34 +1,28 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wordly/models/review.dart';
 import 'package:wordly/screens/admin_users.dart';
+import 'package:wordly/screens/home.dart';
+import 'package:wordly/screens/userLeaderboard.dart';
+import 'package:wordly/screens/user_profile.dart';
 import 'package:wordly/utils/color.dart';
 import 'package:wordly/screens/definitions.dart';
 import 'package:wordly/screens/definition_welcomesplash.dart';
 
 import '../screens/leaderboard.dart';
+import '../screens/review.dart';
 
-class MainDrawer extends StatelessWidget {
-  const MainDrawer({Key? key}) : super(key: key);
+class UserDrawer extends StatelessWidget {
+  const UserDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final user = _auth.currentUser;
-    // final isAdmin = user!.email == 'admin@gmail.com';
-    const isAdmin = true;
-
     navigateLogin() async {
-      Navigator.pushReplacementNamed(context, "login");
+      Navigator.pushReplacementNamed(context, "login"); 
     }
-
-    navigateToReview() async {
-      Navigator.pushReplacementNamed(context, "review");
-    }
-
-    navigateToReviewList() async {
-      Navigator.pushReplacementNamed(context, "reviewList");
-    }
-
+    
     return Drawer(
       child: Column(
         children: [
@@ -62,50 +56,41 @@ class MainDrawer extends StatelessWidget {
                 ],
               ),
             ),
+          ),        
+                    ListTile(
+            leading: const Icon(Icons.home_outlined),
+            title: const Text('Home'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+            },
           ),
-          if (isAdmin)
+
             ListTile(
-              leading: const Icon(Icons.list),
-              title: const Text('Definition List'),
-              onTap: () async {
-                _auth.authStateChanges().listen((event) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              DefinitionAdminWelcomeSplashScreen()));
-                });
-              },
-            ),
-          if (isAdmin)
+            leading: const Icon(Icons.person_outline_outlined),
+            title: const Text('Profile'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const UserProfileScreen()));
+            },
+          ),
             ListTile(
-              leading: const Icon(Icons.supervised_user_circle_outlined),
-              title: const Text('User list'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const UserList()));
-              },
-            ),
+            leading: const Icon(Icons.star_half_rounded),
+            title: const Text('Add Review'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ReviewScreen()));
+            },
+          ),
           ListTile(
             leading: const Icon(Icons.leaderboard_outlined),
             title: const Text('Leaderboard'),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LeaderBoard()));
+                  MaterialPageRoute(builder: (context) => const ULeaderBoard()));
             },
           ),
-          if (!isAdmin)
-            ListTile(
-              leading: const Icon(Icons.star_half_rounded),
-              title: const Text('Add review'),
-              onTap: () => {navigateToReview()},
-            ),
-          if (isAdmin)
-            ListTile(
-              leading: const Icon(Icons.reviews_sharp),
-              title: const Text('Review List'),
-              onTap: () => {navigateToReviewList()},
-            ),
+
           ListTile(
             leading: const Icon(Icons.exit_to_app),
             title: const Text('Sign out'),

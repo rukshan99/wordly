@@ -13,14 +13,10 @@ class ScoreController {
 
   // get all quesions
   Stream<List<Question>> getQuesions() {
-    return _db.collection('questions').snapshots().map((snapshot) => snapshot
+    return _db.collection('definitions').snapshots().map((snapshot) => snapshot
         .docs
         .map((doc) => Question.fromJson(doc.data(), doc.reference))
         .toList());
-  }
-
-  getAllQuestions() {
-    return _db.collection('questions').snapshots();
   }
 
   // Get all scores
@@ -32,10 +28,6 @@ class ScoreController {
         .map((snapshot) => snapshot.docs
             .map((doc) => Score.fromJson(doc.data(), doc.reference))
             .toList());
-  }
-
-  getAllScores() {
-    return _db.collection('scores').snapshots();
   }
 
   // Add a Score
