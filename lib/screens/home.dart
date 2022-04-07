@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:wordly/utils/color.dart';
+import 'package:wordly/widgets/user_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -18,12 +19,32 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: purpleLightColors,
+              appBar: AppBar(
+          backgroundColor: purpleColors,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/img/Logo.png', fit: BoxFit.cover, height: 60.0,),
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Wordly',
+                  style: TextStyle(
+                    fontFamily: 'Righteous',
+                    fontSize: 20.0
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        drawer: UserDrawer(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             child: Center(
-              child: Image.asset('assets/img/logo.jpg'),
+              child: Image.asset('assets/img/Logo.png'),
             ),
           ),
           SizedBox(

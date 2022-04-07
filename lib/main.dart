@@ -15,6 +15,7 @@ import 'package:wordly/screens/home.dart';
 import 'package:wordly/screens/definition_welcomesplash.dart';
 import 'package:wordly/screens/review.dart';
 import 'package:wordly/screens/reviewList.dart';
+import 'package:wordly/screens/user_profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
                 DefinitionAdminWelcomeSplashScreen(),
             "review": (BuildContext context) => const ReviewScreen(),
             "reviewList": (BuildContext context) => const ReviewListScreen(),
+            "userProfile": (BuildContext context) => const UserProfileScreen(),
           },
         ));
   }
