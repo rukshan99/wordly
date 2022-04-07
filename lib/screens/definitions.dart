@@ -907,7 +907,7 @@ class _DefinitionListState extends State<definitionList> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              'assets/img/Logo.png',
+              'assets/img/logo.jpg',
               fit: BoxFit.cover,
               height: 60.0,
             ),

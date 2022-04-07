@@ -30,7 +30,7 @@ class _DefinitionAdminWelcomeSplashScreen extends State<DefinitionAdminWelcomeSp
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Image.asset('assets/img/Logo.png'),
+            child: Image.asset('assets/img/logo.jpg'),
           ),
           const SizedBox(
             height: 25,
